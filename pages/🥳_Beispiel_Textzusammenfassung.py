@@ -5,6 +5,7 @@ author: Markus Wehr
 date: 2023-01-31
 """
 
+from PIL import Image
 import streamlit as st
 
 from src.summarization.summarize import summarize
@@ -13,16 +14,25 @@ from src.summarization.summarize import summarize
 # Sidebar parameters
 st.sidebar.write("**Veränderbare Parameter:**")
 summary_length = st.sidebar.slider(label="Wie lang soll die Zusammenfassung maximal werden?", min_value=25, max_value=150, value=60)
-
+model = st.sidebar.selectbox(
+    label="Welches Modell möchtest Du nutzen?",
+    options=(
+        "Einmalumdiewelt/T5-Base_GNAD",
+        "Einmalumdiewelt/PegasusXSUM_GNAD",
+        "Einmalumdiewelt/BART_large_CNN_GNAD",
+        "Einmalumdiewelt/MT5_small_sum-de_GNAD",
+        "Einmalumdiewelt/DistilBART_CNN_GNAD",
+    )
+)
 
 st.header("Text Summarization mit Machine Learning: Eine kurze Einführung")
 
 st.subheader("*Probiere es aus und lasse die KI einen Text Deiner Wahl für Dich zusammenfassen*")
-input_txt = st.text_area("**Text der zusammengefasst werden soll:**", height=350)
+input_txt = st.text_area("**Text, der zusammengefasst werden soll:**", height=300)
 summary = None
 submit = st.button("Zusammenfassung erstellen")  
 if submit:
-    summary = summarize(input=input_txt, model="Einmalumdiewelt/T5-Base_GNAD", summary_length=summary_length)
+    summary = summarize(input=input_txt, model=model, summary_length=summary_length)
 st.text_area(label="**Deine Zusammenfassung:**", value=summary, height=200)
 
 st.subheader("*Und so funktioniert's hinter der Kulisse:*")
@@ -30,8 +40,13 @@ st.write(
     """
     Text Summarization ist der Prozess, bei dem ein längerer Text in eine kürzere und zusammengefasste Version umgewandelt wird. Ein Machine Learning Algorithmus kann hierbei helfen, den Text automatisch zusammenzufassen. Verschiedene Schritte müssen durchgeführt werden, um einen Machine Learning Algorithmus für Text Summarization zu trainieren und zu nutzen.
 
-    **1. Datenbeschaffung:** 
-    
+    **1. Datenbeschaffung:**
+    """
+    )
+#image = Image.open("images/textdaten.png")
+#st.image("images/textdaten.png")
+st.write(
+    """
     Besorge Dir eine große Menge an Texten, die Du als Trainingsdaten für Ihren Algorithmus nutzen möchtest. Diese Texte sollten bereits zusammengefasst sein, damit der Algorithmus lernen kann, wie er Texte zusammenfassen soll.
     
     **2. Datenaufbereitung:**
