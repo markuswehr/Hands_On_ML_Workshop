@@ -12,10 +12,46 @@ from src.sentiment.sentiment import get_sentiment
 
 
 st.header("Sentiment Analyse von Texten: Emotionen messbar machen")
-
-st.subheader("*Kann man Emotionen messen? Mit diesem Modell kann man es zumindest versuchen.*")
-st.write("Füge einen Text ein und finde heraus, ob dieser negativ, positiv oder neutral assoziiert ist.")
-
+st.write(
+    """
+    Sentiment Analyse ist eine Technik, die es ermöglicht,
+    die emotionale Tendenz oder Meinung ("positiv", "negativ", "neutral") in einem Stück Text oder einer Stimme zu erkennen und zu klassifizieren.
+    Dies kann auf der Ebene eines einzelnen Wortes oder einer ganzen Äußerung geschehen.
+    
+    So können zum Beispiel große Mengen an Kundenfeedback aus verschiedensten Kanälen (z.B. Emails, soziale Medien, App) quantifiziert
+    und Zufriedenheit messbar gemacht werden.
+    
+    Algorithmen, die für Sentiment Analysen genutzt werden, lernen anhand von Beispieltexten, die zuvor von Menschen
+    als "positive", "negative" oder "neutral" klassifiziert wurden.
+    Das Modell nutzt dann diese Informationen, um die sentimentale Tendenz in neuen, ungesehenen Texten zu erkennen.
+    """
+)
+st.subheader("**1. 💡 Ideenfindung und Problemdefinition**")
+st.write(
+    """
+    **WIP**
+    """
+)
+st.subheader("**2. 📥 Datenbeschaffung und -aufbereitung**")
+st.write(
+    """
+    **WIP**
+    """
+)
+st.subheader("**3. 👩‍💻 Entwicklung**")
+st.write(
+    """
+    **WIP: Text über Textklassifizierung**
+    """
+)
+st.subheader("**4. ✅ Implementierung**")
+st.write(
+    """
+    **WIP**
+    
+    Füge einen Text ein und finde heraus, ob dieser negativ, positiv oder neutral assoziiert ist.
+    """
+)
 input_txt = st.text_area("**Text, der analysiert werden soll:**", height=300)
 sentiment_class, probability = None, [[[None, None], [None, None], [None, None]]]
 submit = st.button("Sentiment Analyse durchführen")  
@@ -29,6 +65,13 @@ sentiment_df = pd.DataFrame(data={
     "Wahrscheinlichkeit Neutral": [probability[0][2][1]],
 })
 st.table(sentiment_df)
+st.write(
+    """
+    Beachte, dass das Modell keine absoluten Vorhersagen trifft,
+    sondern jeder Klasse eine Wahrscheinlichkeit zuteilt.
+    Die Summe aller Wahrscheinlichkeiten der verschiedenen Klassen wiederum ergibt 100%.
+    """
+)
 
 
 if __name__ == "__main__":
