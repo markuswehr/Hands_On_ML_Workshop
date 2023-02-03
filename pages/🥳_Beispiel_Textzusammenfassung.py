@@ -11,6 +11,14 @@ import streamlit as st
 from src.summarization.summarize import summarize
 
 
+col1, col2, col3 = st.columns([3,3,2])
+with col1:
+    st.write("")
+with col2:
+    st.write("")
+with col3:
+    st.image("images/ing_logo.png")
+
 # Sidebar parameters
 st.sidebar.write("**Veränderbare Parameter:**")
 summary_length = st.sidebar.slider(label="Wie lang soll die Zusammenfassung maximal werden?", min_value=25, max_value=150, value=60)

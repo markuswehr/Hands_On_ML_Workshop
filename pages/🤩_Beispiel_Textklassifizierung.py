@@ -11,6 +11,14 @@ import streamlit as st
 from src.classification.zero_shot import get_classification
 
 
+col1, col2, col3 = st.columns([3,3,2])
+with col1:
+    st.write("")
+with col2:
+    st.write("")
+with col3:
+    st.image("images/ing_logo.png")
+
 # Sidebar parameters
 st.sidebar.write("**Veränderbare Parameter:**")
 candidate_labels = st.sidebar.multiselect(
@@ -38,19 +46,26 @@ st.header("Schneller zuordnen mithilfe von Textklassifizierung")
 st.subheader("**1. 💡 Ideenfindung und Problemdefinition**")
 st.write(
     """
-    Möglicher Use Case: Automatische Klassifizierung von Kundenemails in jeweilige Kategorien,
-    sodass diese sofort dem/der relevanten Mitarbeiter/-in weitergeleitet werden können.
-
-    Vorteile: Zeitersparnis; Fokussierung auf für Mitarbeiter relevanten Emails
-    """
+    <div style='text-align: justify;'>
+        <b>Möglicher Use Case:</b> Automatische Klassifizierung von Kundenemails in jeweilige Kategorien,
+        sodass diese sofort dem/der relevanten Mitarbeiter/-in weitergeleitet werden können.
+        <br><br>
+        <b>Vorteile:</b> Zeitersparnis; Fokussierung auf für Mitarbeiter relevanten Emails
+        <br><br>
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 st.subheader("**2. 📥 Datenbeschaffung und -aufbereitung**")
 st.write(
     """
-    Damit das Machine Learning Modell lernen kann, die Emails in verschiedene Gruppen zu klassifizieren, benötigt es Beispiele.
-    Dafür müssen einige Emails gelabelt werden. Wie das aussehen kann, siehst du unten. Lies Dir die Emails durch und entscheide,
-    welches Label du der jeweiligen Email geben würdest (Achtung! Einer Email können mehrere Labels gegeben werden).
-    """
+    <div style='text-align: justify;'>
+        Damit das Machine Learning Modell lernen kann, die Emails in verschiedene Gruppen zu klassifizieren, benötigt es Beispiele.
+        Dafür müssen einige Emails gelabelt werden. Wie das aussehen kann, siehst du unten. Lies Dir die Emails durch und entscheide,
+        welches Label du der jeweiligen Email geben würdest (Achtung! Einer Email können mehrere Labels gegeben werden).
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 st.text_area(
     label="1. Email",
@@ -94,6 +109,7 @@ st.text_area(
     height=175,
 )
 st.multiselect(label="Dein Label:  ", options=("Beschwerde", "Girokonto", "Baufinanzierung", "Privatkredit", "Online-Banking", "Depot"))
+st.write("")
 
 st.subheader("**3. 👩‍💻 Entwicklung**")
 st.write(

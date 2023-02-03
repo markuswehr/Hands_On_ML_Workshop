@@ -11,6 +11,14 @@ import streamlit as st
 from src.sentiment.sentiment import get_sentiment
 
 
+col1, col2, col3 = st.columns([3,3,2])
+with col1:
+    st.write("")
+with col2:
+    st.write("")
+with col3:
+    st.image("images/ing_logo.png")
+
 st.header("Sentiment Analyse von Texten: Emotionen messbar machen")
 st.write(
     """
