@@ -8,7 +8,7 @@ date: 2023-01-31
 import pandas as pd
 import streamlit as st
 
-from src.classification.zero_shot import get_classification
+from src.classification.zero_shot import load_zero_shot, get_classification
 
 
 col1, col2, col3 = st.columns([3,3,2])
@@ -131,7 +131,8 @@ preds_df = pd.DataFrame({
 })
 submit = st.button("Text klassifizieren")  
 if submit:
-    preds_df = get_classification(text=input_txt, candidate_labels=candidate_labels)
+    classifier = load_zero_shot()
+    preds_df = get_classification(classifier=classifier, text=input_txt, candidate_labels=candidate_labels)
 st.table(preds_df)
 st.write(
     """

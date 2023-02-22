@@ -8,7 +8,7 @@ date: 2023-02-02
 import pandas as pd
 import streamlit as st
 
-from src.sentiment.sentiment import get_sentiment
+from src.sentiment.sentiment import load_sentiment_model, get_sentiment
 
 
 col1, col2, col3 = st.columns([3,3,2])
@@ -64,7 +64,8 @@ input_txt = st.text_area("**Text, der analysiert werden soll:**", height=300)
 sentiment_class, probability = None, [[[None, None], [None, None], [None, None]]]
 submit = st.button("Sentiment Analyse durchführen")  
 if submit:
-    sentiment_class, probability = get_sentiment(text=[input_txt])
+    model = load_sentiment_model()
+    sentiment_class, probability = get_sentiment(model=model, text=[input_txt])
 
 sentiment_df = pd.DataFrame(data={
     "Sentiment Klasse": [sentiment_class],

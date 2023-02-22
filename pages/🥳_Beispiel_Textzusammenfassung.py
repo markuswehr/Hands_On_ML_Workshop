@@ -8,7 +8,7 @@ date: 2023-01-31
 from PIL import Image
 import streamlit as st
 
-from src.summarization.summarize import summarize
+from src.summarization.summarize import load_summarization_model, summarize
 
 
 col1, col2, col3 = st.columns([3,3,2])
@@ -22,7 +22,7 @@ with col3:
 # Sidebar parameters
 st.sidebar.write("**Veränderbare Parameter:**")
 summary_length = st.sidebar.slider(label="Wie lang soll die Zusammenfassung maximal werden?", min_value=25, max_value=150, value=60)
-model = st.sidebar.selectbox(
+model_string = st.sidebar.selectbox(
     label="Welches Modell möchtest Du nutzen?",
     options=(
         "Einmalumdiewelt/T5-Base_GNAD",
@@ -65,7 +65,8 @@ input_txt = st.text_area("**Text, der zusammengefasst werden soll:**", height=30
 summary = None
 submit = st.button("Zusammenfassung erstellen")  
 if submit:
-    summary = summarize(input=input_txt, model=model, summary_length=summary_length)
+    tokenizer, model = load_summarization_model(model=model_string)
+    summary = summarize(model=model, tokenizer=tokenizer, input=input_txt, summary_length=summary_length)
 st.text_area(label="**Deine Zusammenfassung:**", value=summary, height=200)
 
 

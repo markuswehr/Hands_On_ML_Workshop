@@ -11,8 +11,19 @@ from transformers import pipeline
 import streamlit as st
 
 
-st.cache(allow_output_mutation=True)
-def get_classification(text: str, candidate_labels: List[str]) -> pd.DataFrame:
+@st.cache_resource
+def load_zero_shot() -> pipeline:
+    """
+    Load zero shot pipeline and cache for re-runs.
+
+    Output:
+        classifier -- Zero shot classification pipeline
+    """
+    classifier = pipeline("zero-shot-classification", model="Sahajtomar/German_Zeroshot")
+
+    return classifier
+
+def get_classification(classifier: pipeline, text: str, candidate_labels: List[str]) -> pd.DataFrame:
     """
     Function to load zero-shot model and perform classification.
 
@@ -22,7 +33,6 @@ def get_classification(text: str, candidate_labels: List[str]) -> pd.DataFrame:
     output:
         preds_df -- Labels, probability scores and the original text sequence
     """
-    classifier = pipeline("zero-shot-classification", model="Sahajtomar/German_Zeroshot")
     # Since this is a monolingual model,its sensitive to hypothesis template
     hypothesis_template = "In diesem Text geht es um {}."
     preds = classifier(text, candidate_labels, hypothesis_template=hypothesis_template)
