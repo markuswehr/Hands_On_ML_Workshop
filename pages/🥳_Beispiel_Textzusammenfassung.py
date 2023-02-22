@@ -11,6 +11,9 @@ import streamlit as st
 from src.summarization.summarize import load_summarization_model, summarize
 
 
+# Clear cache
+st.cache_data.clear()
+
 col1, col2, col3 = st.columns([3,3,2])
 with col1:
     st.write("")
