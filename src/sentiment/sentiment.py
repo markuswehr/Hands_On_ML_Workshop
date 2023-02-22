@@ -7,8 +7,10 @@ date: 2023-02-01
 
 from typing import List, Tuple
 from germansentiment import SentimentModel
+import streamlit as st
 
 
+st.cache(allow_output_mutation=True)
 def get_sentiment(text: str) -> List:
     """
     Function to predict sentiment and probability score for that sentiment for a given text.

@@ -8,8 +8,10 @@ date: 2023-02-01
 import pandas as pd
 from typing import List
 from transformers import pipeline
+import streamlit as st
 
 
+st.cache(allow_output_mutation=True)
 def get_classification(text: str, candidate_labels: List[str]) -> pd.DataFrame:
     """
     Function to load zero-shot model and perform classification.

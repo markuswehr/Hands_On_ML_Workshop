@@ -6,8 +6,10 @@ date: 2023-01-31
 """
 
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import streamlit as st
 
 
+st.cache(allow_output_mutation=True)
 def summarize(input: str, model: str, summary_length: int=25) -> str:
     """
     Function that loads tokenizer and model and summarizes input.
