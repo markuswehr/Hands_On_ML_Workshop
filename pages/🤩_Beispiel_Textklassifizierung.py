@@ -12,7 +12,10 @@ from src.classification.zero_shot import load_zero_shot, get_classification
 
 
 # Clear cache
-st.cache_resource.clear()
+#st.cache_resource.clear()
+summarization_tokenizer = st.empty()
+summarization_model = st.empty()
+sentiment_model = st.empty()
 
 col1, col2, col3 = st.columns([3,3,2])
 with col1:
@@ -134,8 +137,8 @@ preds_df = pd.DataFrame({
 })
 submit = st.button("Text klassifizieren")  
 if submit:
-    classifier = load_zero_shot()
-    preds_df = get_classification(classifier=classifier, text=input_txt, candidate_labels=candidate_labels)
+    classification_model = load_zero_shot()
+    preds_df = get_classification(classifier=classification_model, text=input_txt, candidate_labels=candidate_labels)
 st.table(preds_df)
 st.write(
     """

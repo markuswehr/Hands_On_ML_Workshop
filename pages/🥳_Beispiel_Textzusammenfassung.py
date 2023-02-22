@@ -12,7 +12,9 @@ from src.summarization.summarize import load_summarization_model, summarize
 
 
 # Clear cache
-st.cache_resource.clear()
+#st.cache_resource.clear()
+classification_model = st.empty()
+sentiment_model = st.empty()
 
 col1, col2, col3 = st.columns([3,3,2])
 with col1:
@@ -68,8 +70,8 @@ input_txt = st.text_area("**Text, der zusammengefasst werden soll:**", height=30
 summary = None
 submit = st.button("Zusammenfassung erstellen")  
 if submit:
-    tokenizer, model = load_summarization_model(model=model_string)
-    summary = summarize(model=model, tokenizer=tokenizer, input=input_txt, summary_length=summary_length)
+    summarization_tokenizer, summarization_model = load_summarization_model(model=model_string)
+    summary = summarize(model=summarization_model, tokenizer=summarization_tokenizer, input=input_txt, summary_length=summary_length)
 st.text_area(label="**Deine Zusammenfassung:**", value=summary, height=200)
 
 

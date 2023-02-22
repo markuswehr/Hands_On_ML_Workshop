@@ -12,7 +12,10 @@ from src.sentiment.sentiment import load_sentiment_model, get_sentiment
 
 
 # Clear cache
-st.cache_resource.clear()
+#st.cache_resource.clear()
+summarization_tokenizer = st.empty()
+summarization_model = st.empty()
+classification_model = st.empty()
 
 col1, col2, col3 = st.columns([3,3,2])
 with col1:
@@ -67,8 +70,8 @@ input_txt = st.text_area("**Text, der analysiert werden soll:**", height=300)
 sentiment_class, probability = None, [[[None, None], [None, None], [None, None]]]
 submit = st.button("Sentiment Analyse durchführen")  
 if submit:
-    model = load_sentiment_model()
-    sentiment_class, probability = get_sentiment(model=model, text=[input_txt])
+    sentiment_model = load_sentiment_model()
+    sentiment_class, probability = get_sentiment(model=sentiment_model, text=[input_txt])
 
 sentiment_df = pd.DataFrame(data={
     "Sentiment Klasse": [sentiment_class],
