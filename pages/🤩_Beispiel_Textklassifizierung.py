@@ -13,9 +13,9 @@ from src.classification.zero_shot import load_zero_shot, get_classification
 
 # Clear cache
 #st.cache_resource.clear()
-summarization_tokenizer = st.empty()
-summarization_model = st.empty()
-sentiment_model = st.empty()
+#summarization_tokenizer = st.empty()
+#summarization_model = st.empty()
+#sentiment_model = st.empty()
 
 col1, col2, col3 = st.columns([3,3,2])
 with col1:

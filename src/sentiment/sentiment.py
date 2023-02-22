@@ -5,12 +5,12 @@ author: Markus Wehr
 date: 2023-02-01
 """
 
-from typing import List, Tuple
+from typing import List
 from germansentiment import SentimentModel
 import streamlit as st
 
 
-@st.cache_resource
+@st.cache_resource(ttl=180, max_entries=2)
 def load_sentiment_model() -> SentimentModel:
     """
     Load and cache sentiment model.

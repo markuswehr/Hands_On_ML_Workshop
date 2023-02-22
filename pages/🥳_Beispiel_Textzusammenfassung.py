@@ -13,8 +13,8 @@ from src.summarization.summarize import load_summarization_model, summarize
 
 # Clear cache
 #st.cache_resource.clear()
-classification_model = st.empty()
-sentiment_model = st.empty()
+#classification_model = st.empty()
+#sentiment_model = st.empty()
 
 col1, col2, col3 = st.columns([3,3,2])
 with col1:

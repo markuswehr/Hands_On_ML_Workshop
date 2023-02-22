@@ -13,9 +13,9 @@ from src.sentiment.sentiment import load_sentiment_model, get_sentiment
 
 # Clear cache
 #st.cache_resource.clear()
-summarization_tokenizer = st.empty()
-summarization_model = st.empty()
-classification_model = st.empty()
+#summarization_tokenizer = st.empty()
+#summarization_model = st.empty()
+#classification_model = st.empty()
 
 col1, col2, col3 = st.columns([3,3,2])
 with col1:
