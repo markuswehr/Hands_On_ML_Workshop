@@ -6,7 +6,7 @@ date: 2023-02-01
 """
 
 from typing import List
-#from germansentiment import SentimentModel
+from germansentiment import SentimentModel
 import streamlit as st
 
 
