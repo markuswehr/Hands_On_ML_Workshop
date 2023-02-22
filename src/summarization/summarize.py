@@ -12,7 +12,7 @@ import streamlit as st
 
 
 @st.cache_resource
-def load_summarization_model(model: str) -> Tuple(AutoModelForSeq2SeqLM, AutoModelForSeq2SeqLM):
+def load_summarization_model(model: str) -> Tuple[AutoModelForSeq2SeqLM, AutoModelForSeq2SeqLM]:
     """
     Load and cache tokenizer and model.
 
