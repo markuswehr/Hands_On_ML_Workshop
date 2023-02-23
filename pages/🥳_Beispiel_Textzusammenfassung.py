@@ -8,8 +8,6 @@ date: 2023-01-31
 from PIL import Image
 import streamlit as st
 
-from src.summarization.summarize import load_summarization_model, summarize
-
 
 # Clear cache
 #st.cache_resource.clear()
@@ -70,8 +68,13 @@ input_txt = st.text_area("**Text, der zusammengefasst werden soll:**", height=30
 summary = None
 submit = st.button("Zusammenfassung erstellen")  
 if submit:
-    summarization_tokenizer, summarization_model = load_summarization_model(model=model_string)
-    summary = summarize(model=summarization_model, tokenizer=summarization_tokenizer, input=input_txt, summary_length=summary_length)
+    st.error(
+        """
+        Textzusammenfassung wird aufgrund von Server-Limitationen aktuell nicht vom Ersteller dieser Website bereitgestellt.
+        Bitte kontaktiere Tribe Analytics, wenn du mehr über Textzusammenfassung erfahren möchtest.
+        """,
+        icon="🚨"
+    )
 st.text_area(label="**Deine Zusammenfassung:**", value=summary, height=200)
 
 

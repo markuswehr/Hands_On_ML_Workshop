@@ -8,8 +8,6 @@ date: 2023-02-02
 import pandas as pd
 import streamlit as st
 
-from src.sentiment.sentiment import load_sentiment_model, get_sentiment
-
 
 # Clear cache
 #st.cache_resource.clear()
@@ -70,8 +68,13 @@ input_txt = st.text_area("**Text, der analysiert werden soll:**", height=300)
 sentiment_class, probability = None, [[[None, None], [None, None], [None, None]]]
 submit = st.button("Sentiment Analyse durchführen")  
 if submit:
-    sentiment_model = load_sentiment_model()
-    sentiment_class, probability = get_sentiment(model=sentiment_model, text=[input_txt])
+    st.error(
+        """
+        Sentiment Analyse wird aufgrund von Server-Limitationen aktuell nicht vom Ersteller dieser Website bereitgestellt.
+        Bitte kontaktiere Tribe Analytics, wenn du mehr über Sentiment Analyse erfahren möchtest.
+        """,
+        icon="🚨"
+    )
 
 sentiment_df = pd.DataFrame(data={
     "Sentiment Klasse": [sentiment_class],
