@@ -27,16 +27,16 @@ with col3:
 # Sidebar parameters
 st.sidebar.write("**Veränderbare Parameter:**")
 summary_length = st.sidebar.slider(label="Wie lang soll die Zusammenfassung maximal werden?", min_value=25, max_value=150, value=60)
-model_string = st.sidebar.selectbox(
-    label="Welches Modell möchtest Du nutzen?",
-    options=(
-        "Einmalumdiewelt/T5-Base_GNAD",
-        "Einmalumdiewelt/PegasusXSUM_GNAD",
-        "Einmalumdiewelt/BART_large_CNN_GNAD",
-        "Einmalumdiewelt/MT5_small_sum-de_GNAD",
-        "Einmalumdiewelt/DistilBART_CNN_GNAD",
-    )
-)
+#model_string = st.sidebar.selectbox(
+#    label="Welches Modell möchtest Du nutzen?",
+#    options=(
+#        "Einmalumdiewelt/T5-Base_GNAD",
+#        "Einmalumdiewelt/PegasusXSUM_GNAD",
+#        "Einmalumdiewelt/BART_large_CNN_GNAD",
+#        "Einmalumdiewelt/MT5_small_sum-de_GNAD",
+#        "Einmalumdiewelt/DistilBART_CNN_GNAD",
+#    )
+#)
 
 st.header("Schneller verstehen, worum es geht - mit Text Summarization")
 
@@ -70,7 +70,7 @@ input_txt = st.text_area("**Text, der zusammengefasst werden soll:**", height=30
 summary = None
 submit = st.button("Zusammenfassung erstellen")  
 if submit:
-    summarization_tokenizer, summarization_model = load_summarization_model(model=model_string)
+    summarization_tokenizer, summarization_model = load_summarization_model(model="Einmalumdiewelt/T5-Base_GNAD")
     summary = summarize(model=summarization_model, tokenizer=summarization_tokenizer, input=input_txt, summary_length=summary_length)
 st.text_area(label="**Deine Zusammenfassung:**", value=summary, height=200)
 

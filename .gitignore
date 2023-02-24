@@ -130,3 +130,6 @@ dmypy.json
 
 # Conda env
 workshop/
+
+# Models
+models/

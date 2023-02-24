@@ -11,7 +11,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import streamlit as st
 
 
-@st.cache_resource(ttl=180, max_entries=1)
+#@st.cache_resource(ttl=300, max_entries=2)
 def load_summarization_model(model: str) -> Tuple[AutoModelForSeq2SeqLM, AutoModelForSeq2SeqLM]:
     """
     Load and cache tokenizer and model.
