@@ -260,8 +260,13 @@ if check_password():
     })
     submit = st.button("Text klassifizieren")  
     if submit:
-        classification_model = load_zero_shot()
-        preds_df = get_classification(classifier=classification_model, text=input_txt, candidate_labels=candidate_labels)
+        st.error(
+            """
+            Textklassifizierung wird aufgrund von Server-Limitationen aktuell nicht von uns bereitgestellt.
+            Bitte kontaktiere Tribe Analytics, wenn du mehr erfahren möchtest.
+            """,
+            icon="🚨"
+        )
     st.table(preds_df)
     st.write(
         """

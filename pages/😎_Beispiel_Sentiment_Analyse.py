@@ -259,8 +259,13 @@ if check_password():
     sentiment_class, probability = None, [[[None, None], [None, None], [None, None]]]
     submit = st.button("Sentiment Analyse durchführen")  
     if submit:
-        sentiment_model = load_sentiment_model()
-        sentiment_class, probability = get_sentiment(model=sentiment_model, text=[input_txt])
+        st.error(
+            """
+            Sentiment Analyse wird aufgrund von Server-Limitationen aktuell nicht von uns bereitgestellt.
+            Bitte kontaktiere Tribe Analytics, wenn du mehr erfahren möchtest.
+            """,
+            icon="🚨"
+        )
 
     sentiment_df = pd.DataFrame(data={
         "Sentiment Klasse": [sentiment_class],

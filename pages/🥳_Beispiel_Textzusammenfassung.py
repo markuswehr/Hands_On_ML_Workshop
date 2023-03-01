@@ -173,8 +173,13 @@ if check_password():
     summary = None
     submit = st.button("Zusammenfassung erstellen")  
     if submit:
-        summarization_tokenizer, summarization_model = load_summarization_model(model="Einmalumdiewelt/T5-Base_GNAD")
-        summary = summarize(model=summarization_model, tokenizer=summarization_tokenizer, input=input_txt, summary_length=summary_length)
+        st.error(
+            """
+            Text Summarization wird aufgrund von Server-Limitationen aktuell nicht von uns bereitgestellt.
+            Bitte kontaktiere Tribe Analytics, wenn du mehr erfahren möchtest.
+            """,
+            icon="🚨"
+        )
     st.text_area(label="**Deine Zusammenfassung:**", value=summary, height=200)
 
 
