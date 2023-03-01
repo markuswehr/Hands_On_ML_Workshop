@@ -11,7 +11,7 @@ from transformers import pipeline
 import streamlit as st
 
 
-@st.cache_resource(ttl=300, max_entries=2)
+#@st.cache_resource
 def load_zero_shot() -> pipeline:
     """
     Load zero shot pipeline and cache for re-runs.
