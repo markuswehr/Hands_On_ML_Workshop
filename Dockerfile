@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone --branch gcp https://github.com/markuswehr/Hands_On_ML_Workshop.git .
+RUN git clone --branch gcp_no_models https://github.com/markuswehr/Hands_On_ML_Workshop.git .
 
 RUN pip3 install -r requirements.txt
 
